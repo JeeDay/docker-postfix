@@ -1,5 +1,5 @@
 From ubuntu:trusty
-MAINTAINER Elliott Ye
+MAINTAINER Jean-Donald Roselin
 
 # Set noninteractive mode for apt-get
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,9 +13,6 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools
 
 # Add files
 ADD assets/install.sh /opt/install.sh
-
-# Set permission on copied script
-RUN /bin/bash -c 'ls /opt/ -la; chmod +x /opt/install.sh; ls /opt/ -la'
 
 # Run
 CMD /opt/install.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
